@@ -1,24 +1,24 @@
 document.addEventListener("DOMContentLoaded", function() { startVideoPlayer(); }, false);
-var player;
+var videoPlayer;
 
 function startVideoPlayer() {
-    player = document.getElementById('video-player');
-    player.controls = false;
+    videoPlayer = document.getElementById('video-player');
+    videoPlayer.controls = false;
 }
 
 function playVideo() {
-    player.play();
+    videoPlayer.play();
 }
 
 function pauseVideo() {
-    player.pause();
+    videoPlayer.pause();
 }
 
 function stopVideo() {
-    player.pause();
-    player.currentTime = 0;
+    videoPlayer.pause();
+    videoPlayer.currentTime = 0;
 }
 
 function changeVolume() {
-    player.volume = document.getElementById("change-volume").value;
+    videoPlayer.volume = document.getElementById("change-volume").value;
 }
