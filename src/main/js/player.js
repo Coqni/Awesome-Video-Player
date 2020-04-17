@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() { startVideoPlayer(); }
 var player;
 
 function startVideoPlayer() {
-    player = document.getElementById('video_player');
+    player = document.getElementById('video-player');
     player.controls = false;
 }
 
@@ -20,5 +20,5 @@ function stopVideo() {
 }
 
 function changeVolume() {
-    player.volume = document.getElementById("change_vol").value;
+    player.volume = document.getElementById("change-volume").value;
 }
