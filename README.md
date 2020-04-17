@@ -18,7 +18,7 @@ Video Player developed by BestOfCode
 
 The document should look like this:
 
-`
+```
 <html>
   <head>
       <link rel="stylesheet" href="https://www.bestofcode.net/video-player/VideoPlayer.js">
@@ -28,4 +28,5 @@ The document should look like this:
       <div class="player" player-src="../videos/sample.mp4"></div>
   </body>
   <script src="https://www.bestofcode.net/video-player/VideoPlayer.js">
-</html>`
+</html>
+```
