@@ -1,3 +1,32 @@
+class VideoPlayer {
+
+    constructor(videoUrl, videoPlayerId, width, height) {
+        this.videoUrl = videoUrl;
+        this.videoPlayerId = videoPlayerId;
+        this.width = width;
+        this.height = height;
+
+        // generate a new instance of a video player
+
+        this.videoPlayerElement = getHtmlElement();
+
+        appendVideoPlayer();
+    }
+
+    getHtmlElement() {
+        let players = document.querySelectorAll(".player");
+        for (let i = 0; i < players.length; i++) {
+            if (players[i].getAttribute("player-id") == this.videoPlayerId) {
+                return players[i];
+            }
+        }
+    }
+
+    appendVideoPlayer() {
+        this.videoPlayerElement;
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function() { startVideoPlayer(); }, false);
 var videoPlayer;
 var preview = 0;
