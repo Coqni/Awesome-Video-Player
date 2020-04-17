@@ -3,7 +3,7 @@ body {
     margin: 0 auto;
     padding: 0px;
     font-family: helvetica;
-    background-color: #BCF5A9;
+    background-color: rgb(60, 60, 60);
 }
 
 #wrapper {

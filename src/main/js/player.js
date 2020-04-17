@@ -1,24 +1,24 @@
-document.addEventListener("DOMContentLoaded", function() { startplayer(); }, false);
+document.addEventListener("DOMContentLoaded", function() { startVideoPlayer(); }, false);
 var player;
 
-function startplayer() {
+function startVideoPlayer() {
     player = document.getElementById('video_player');
     player.controls = false;
 }
 
-function play_vid() {
+function playVideo() {
     player.play();
 }
 
-function pause_vid() {
+function pauseVideo() {
     player.pause();
 }
 
-function stop_vid() {
+function stopVideo() {
     player.pause();
     player.currentTime = 0;
 }
 
-function change_vol() {
+function changeVolume() {
     player.volume = document.getElementById("change_vol").value;
 }
