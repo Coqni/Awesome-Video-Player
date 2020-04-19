@@ -8,7 +8,7 @@ class VideoPlayer {
 
         this.videoPlayerElement;
         this.getHtmlElement();
-        //this.processAttributes();
+        this.processAttributes();
 
         //this.appendVideoPlayer();
     }
@@ -16,13 +16,11 @@ class VideoPlayer {
     getHtmlElement() {
 
         let players = document.getElementsByClassName("player");
-        console.log("players: " + players);
         let resultingPlayer;
 
         for (let i = 0; i < players.length; i++) {
 
             if (players[i].getAttribute("player-id").localeCompare(this.videoPlayerId) == 0) {
-                console.log(players[i]);
                 resultingPlayer = players[i];
             }
         }
