@@ -2,15 +2,23 @@ class VideoPlayer {
 
     constructor(videoPlayerId, width, height) {
 
+        if (videoPlayerId == undefined) {
+            console.log("Error: No attribute \"player-id\" set in the HTML");
+            return;
+        }
         this.videoPlayerId = videoPlayerId.toString();
 
         // generate a new instance of a video player
+        this.videoPlayer;
 
         this.videoPlayerElement;
         this.getHtmlElement();
         this.processAttributes();
+        this.preview;
 
-        //this.appendVideoPlayer();
+        this.appendVideoPlayer();
+
+        this.prepareVideoPlayer();
     }
 
     getHtmlElement() {
@@ -65,27 +73,77 @@ class VideoPlayer {
         playerWrapper.setAttribute("class", "player-wrapper");
         let videoPlayerHtml = document.createElement("video");
         videoPlayerHtml.setAttribute("class", "video-player");
+
+        this.videoPlayer = videoPlayerHtml;
         let videoPlayerSource = document.createElement("source");
         videoPlayerSource.setAttribute("src", this.videoUrl);
         videoPlayerSource.setAttribute("type", "video/mp4");
         videoPlayerHtml.appendChild(videoPlayerSource);
         playerWrapper.appendChild(videoPlayerHtml);
+        playerWrapper.insertAdjacentHTML("beforeend", "\
+            <div id=\'player-controls\'>\
+                <input type=\"image\" src=\"../img/play.png\" onclick=\"get(" + get(this.videoPlayerId) + ").playVideo(" + this.videoPlayerId + ")\" id=\"play-button\">\
+                <input type=\"image\" src=\"../img/pause.png\" onclick=\"get(" + get(this.videoPlayerId) + ").pauseVideo(" + this.videoPlayerId + ")\" id=\"pause-button\">\
+                <input type=\"image\" src=\"../img/stop.png\" onclick=\"get(" + get(this.videoPlayerId) + ").stopVideo(" + this.videoPlayerId + ")\" id=\"stop-button\">\
+                <img src=\"../img/volume.png\" id=\"vol-img\">\
+                <input type=\"range\" id=\"change-volume-" + this.videoPlayerId + "\" onchange=\"get(" + this.videoPlayerId + ").changeVolume(" + this.videoPlayerId + ")\" step=\"0.05\" min=\"0\" max=\"1\" value=\"1\">\
+            </div>\
+        ");
 
-        //this.videoPlayerElement.append();
+        this.videoPlayerElement.append(playerWrapper);
+    }
+
+    playVideo() {
+        this.preview = 1;
+        this.videoPlayer.play();
+    }
+
+    prepareVideoPlayer() {
+        this.videoPlayer.controls = false;
+        this.videoPlayer.currentTime = 1;
+    }
+
+    pauseVideo() {
+        this.videoPlayer.pause();
+    }
+
+    stopVideo() {
+        this.preview = 0;
+        this.videoPlayer.pause();
+        this.videoPlayer.currentTime = 1;
+    }
+
+    changeVolume() {
+        this.videoPlayer.volume = document.getElementById("change-volume-" + this.videoPlayerId).value;
+    }
+}
+//document.addEventListener("DOMContentLoaded", function() { generateVideoPlayers(); }, false);
+var videoPlayerRaws;
+var videoPlayerObjects = [];
+
+generateVideoPlayers();
+
+function generateVideoPlayers() {
+    videoPlayerRaws = document.getElementsByClassName('player');
+    let tmpId = 0;
+    for (let i = 0; i < videoPlayerRaws.length; i++) {
+        tmpId = videoPlayerRaws[i].getAttribute("player-id");
+        videoPlayerObjects.push(new VideoPlayer(tmpId));
+    }
+    videoPlayerObjects.push(new VideoPlayer());
+
+}
+
+function get(videoPlayerId) {
+
+    for (let i = 0; i < videoPlayerObjects.length; i++) {
+
+        if (videoPlayerObjects[i].videoPlayerId.localeCompare(i.toString()) == 0) {
+            return videoPlayerObjects[i];
+        }
     }
 }
 /*
-document.addEventListener("DOMContentLoaded", function() { startVideoPlayer(); }, false);
-var videoPlayer;
-var preview = 0;
-
-function startVideoPlayer() {
-    videoPlayer = document.getElementsByClassName('video-player')[0];
-    videoPlayer.controls = false;
-    videoPlayer.currentTime = 1;
-
-}
-
 function playVideo() {
     preview = 1;
     videoPlayer.play();
