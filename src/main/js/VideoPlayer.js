@@ -27,8 +27,14 @@ class VideoPlayer {
         let playerWrapper = document.createElement("div");
         playerWrapper.setAttribute("class", "player-wrapper");
         let videoPlayerHtml = document.createElement("video");
-        videoPlayerHtml.setAttribute("")
-            //this.videoPlayerElement.append();
+        videoPlayerHtml.setAttribute("class", "video-player");
+        let videoPlayerSource = document.createElement("source");
+        videoPlayerSource.setAttribute("src", this.videoUrl);
+        videoPlayerSource.setAttribute("type", "video/mp4");
+        videoPlayerHtml.appendChild(videoPlayerSource);
+        playerWrapper.appendChild(videoPlayerHtml);
+
+        //this.videoPlayerElement.append();
     }
 }
 
