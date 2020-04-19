@@ -1,6 +1,6 @@
 class VideoPlayer {
 
-    constructor(videoUrl, videoPlayerId, width, height) {
+    constructor(videoPlayerId, width, height) {
         this.videoUrl = videoUrl;
         this.videoPlayerId = videoPlayerId;
         this.width = width;
@@ -29,6 +29,7 @@ class VideoPlayer {
     }
 
     processAttributes() {
+
         if (!this.videoPlayerElement.getAttribute("player-id")) {
 
             console.log("Error: No attribute \"player-id\" set in the HTML for the player with the id " + this.videoPlayerId);
@@ -40,6 +41,22 @@ class VideoPlayer {
         } else {
 
             console.log("Error: No attribute \"player-src\" set for the player with the id " + this.videoPlayerId);
+        }
+
+        if (this.videoPlayerElement.getAttribute("player-width")) {
+
+            this.width = this.videoPlayerElement.getAttribute("player-width");
+        } else {
+
+            this.width = 200;
+        }
+
+        if (this.videoPlayerElement.getAttribute("player-height")) {
+
+            this.height = this.videoPlayerElement.getAttribute("player-height");
+        } else {
+
+            this.height = 200;
         }
     }
 
