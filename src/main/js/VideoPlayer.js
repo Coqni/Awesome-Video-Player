@@ -9,16 +9,37 @@ class VideoPlayer {
         // generate a new instance of a video player
 
         this.videoPlayerElement = getHtmlElement();
+        processAttributes();
 
         appendVideoPlayer();
     }
 
     getHtmlElement() {
+
         let players = document.querySelectorAll(".player");
+        let resultingPlayer;
+
         for (let i = 0; i < players.length; i++) {
+
             if (players[i].getAttribute("player-id") == this.videoPlayerId) {
-                return players[i];
+
+                return resultingPlayer;
             }
+        }
+    }
+
+    processAttributes() {
+        if (!this.videoPlayerElement.getAttribute("player-id")) {
+
+            console.log("Error: No attribute \"player-id\" set in the HTML for the player with the id " + this.videoPlayerId);
+            return;
+        }
+        if (this.videoPlayerElement.getAttribute("player-src")) {
+
+            this.videoUrl = this.videoPlayerElement.getAttribute("player-src");
+        } else {
+
+            console.log("Error: No attribute \"player-src\" set for the player with the id " + this.videoPlayerId);
         }
     }
 
