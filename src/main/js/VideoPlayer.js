@@ -82,9 +82,9 @@ class VideoPlayer {
         playerWrapper.appendChild(videoPlayerHtml);
         playerWrapper.insertAdjacentHTML("beforeend", "\
             <div id=\'player-controls\'>\
-                <input type=\"image\" src=\"../img/play.png\" onclick=\"get(" + get(this.videoPlayerId) + ").playVideo(" + this.videoPlayerId + ")\" id=\"play-button\">\
-                <input type=\"image\" src=\"../img/pause.png\" onclick=\"get(" + get(this.videoPlayerId) + ").pauseVideo(" + this.videoPlayerId + ")\" id=\"pause-button\">\
-                <input type=\"image\" src=\"../img/stop.png\" onclick=\"get(" + get(this.videoPlayerId) + ").stopVideo(" + this.videoPlayerId + ")\" id=\"stop-button\">\
+                <input type=\"image\" src=\"../img/play.png\" onclick=\"get(" + this.videoPlayerId + ").playVideo(" + this.videoPlayerId + ")\" id=\"play-button\">\
+                <input type=\"image\" src=\"../img/pause.png\" onclick=\"get(" + this.videoPlayerId + ").pauseVideo(" + this.videoPlayerId + ")\" id=\"pause-button\">\
+                <input type=\"image\" src=\"../img/stop.png\" onclick=\"get(" + this.videoPlayerId + ").stopVideo(" + this.videoPlayerId + ")\" id=\"stop-button\">\
                 <img src=\"../img/volume.png\" id=\"vol-img\">\
                 <input type=\"range\" id=\"change-volume-" + this.videoPlayerId + "\" onchange=\"get(" + this.videoPlayerId + ").changeVolume(" + this.videoPlayerId + ")\" step=\"0.05\" min=\"0\" max=\"1\" value=\"1\">\
             </div>\
