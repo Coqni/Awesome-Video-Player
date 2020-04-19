@@ -1,31 +1,32 @@
 class VideoPlayer {
 
     constructor(videoPlayerId, width, height) {
-        this.videoUrl = videoUrl;
-        this.videoPlayerId = videoPlayerId;
-        this.width = width;
-        this.height = height;
+
+        this.videoPlayerId = videoPlayerId.toString();
 
         // generate a new instance of a video player
 
-        this.videoPlayerElement = getHtmlElement();
-        processAttributes();
+        this.videoPlayerElement;
+        this.getHtmlElement();
+        //this.processAttributes();
 
-        appendVideoPlayer();
+        //this.appendVideoPlayer();
     }
 
     getHtmlElement() {
 
-        let players = document.querySelectorAll(".player");
+        let players = document.getElementsByClassName("player");
+        console.log("players: " + players);
         let resultingPlayer;
 
         for (let i = 0; i < players.length; i++) {
 
-            if (players[i].getAttribute("player-id") == this.videoPlayerId) {
-
-                return resultingPlayer;
+            if (players[i].getAttribute("player-id").localeCompare(this.videoPlayerId) == 0) {
+                console.log(players[i]);
+                resultingPlayer = players[i];
             }
         }
+        this.videoPlayerElement = resultingPlayer;
     }
 
     processAttributes() {
@@ -75,7 +76,7 @@ class VideoPlayer {
         //this.videoPlayerElement.append();
     }
 }
-
+/*
 document.addEventListener("DOMContentLoaded", function() { startVideoPlayer(); }, false);
 var videoPlayer;
 var preview = 0;
@@ -104,4 +105,4 @@ function stopVideo() {
 
 function changeVolume() {
     videoPlayer.volume = document.getElementById("change-volume").value;
-}
+}*/
