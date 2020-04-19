@@ -6,20 +6,20 @@ body {
     background-color: rgb(60, 60, 60);
 }
 
-#wrapper {
+.wrapper {
     text-align: center;
     margin: 0 auto;
     padding: 0px;
     width: 995px;
 }
 
-#player-wrapper {
+.player-wrapper {
     position: relative;
     width: 400px;
     margin-left: 300px;
 }
 
-#video-player {
+.video-player {
     width: 400px;
 }
 
@@ -34,7 +34,7 @@ body {
     opacity: 0;
 }
 
-#player-wrapper:hover>#player-controls {
+.player-wrapper:hover>#player-controls {
     opacity: 100;
     transition-duration: 0.3s;
 }

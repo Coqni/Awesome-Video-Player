@@ -23,7 +23,12 @@ class VideoPlayer {
     }
 
     appendVideoPlayer() {
-        this.videoPlayerElement;
+        this.videoPlayerElement.setAttribute("class", "wrapper");
+        let playerWrapper = document.createElement("div");
+        playerWrapper.setAttribute("class", "player-wrapper");
+        let videoPlayerHtml = document.createElement("video");
+        videoPlayerHtml.setAttribute("")
+            //this.videoPlayerElement.append();
     }
 }
 
@@ -32,7 +37,7 @@ var videoPlayer;
 var preview = 0;
 
 function startVideoPlayer() {
-    videoPlayer = document.getElementById('video-player');
+    videoPlayer = document.getElementsByClassName('video-player')[0];
     videoPlayer.controls = false;
     videoPlayer.currentTime = 1;
 
