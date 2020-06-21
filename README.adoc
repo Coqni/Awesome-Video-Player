@@ -24,7 +24,7 @@ Video Player developed by BestOfCode
 
 The document should look like this:
 
-```
+```html
 <html>
   <head>
       <link rel="stylesheet" href="https://www.bestofcode.net/video-player/VideoPlayer.js">
