@@ -1,17 +1,19 @@
-= BestOfCode-Video-Player
+= Awesome-Video-Player
 Video Player developed by BestOfCode
+
+---
 
 == Features
 * Video preview pictures
 * Skip opening, ending
 
+---
 
 == Setup
 1. Clone the repository and insert the files into your project.
 
-=== OR
 
-=== Alternatively you can import the javascript source and it will automatically initialize the video player.
+==== Alternatively you can import the javascript source and it will automatically initialize the video player.
 
 1. You can add the javascript by adding the following to your html:
 `<script src="https://www.bestofcode.net/video-player/VideoPlayer.js">`
@@ -38,3 +40,5 @@ The document should look like this:
 </html>
 ```
 5. Now on page-load `VideoPlayer.js` will iterate through the HTML and will generate a separate VideoPlayer for each `div` which was annotated as mentioned before.
+
+---
