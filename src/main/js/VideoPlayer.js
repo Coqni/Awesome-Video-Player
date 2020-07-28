@@ -65,6 +65,8 @@ class VideoPlayer {
 
             this.height = 200;
         }
+
+        console.log(this.width + ", " + this.height);
     }
 
     appendVideoPlayer() {
@@ -75,9 +77,20 @@ class VideoPlayer {
         videoPlayerHtml.setAttribute("class", "video-player");
 
         this.videoPlayer = videoPlayerHtml;
+
+        // set attributes for videoPlayer:
+        /*if(this.height > 200) {
+            this.videoPlayer.style.height = this.height;
+        }
+        if(this.width > 200) {
+            this.videoPlayer.style.width = this.width;
+        }*/
+
         let videoPlayerSource = document.createElement("source");
+
         videoPlayerSource.setAttribute("src", this.videoUrl);
         videoPlayerSource.setAttribute("type", "video/mp4");
+
         videoPlayerHtml.appendChild(videoPlayerSource);
         playerWrapper.appendChild(videoPlayerHtml);
         playerWrapper.insertAdjacentHTML("beforeend", "\
