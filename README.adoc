@@ -9,6 +9,13 @@ Video Player developed by BestOfCode
 
 ---
 
+== Demo
+Click the link below to find a simple demo
+
+http://bestofcode.net/Applications/Awesome-Video-Player/html/[ℹ️ Start demo]
+
+---
+
 == Setup
 1. Clone the repository and insert the files into your project.
 
