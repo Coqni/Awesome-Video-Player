@@ -85,7 +85,7 @@ class VideoPlayer {
                 <input type=\"image\" src=\"../img/play.png\" onclick=\"get(" + this.videoPlayerId + ").playVideo(" + this.videoPlayerId + ")\" id=\"play-button\">\
                 <input type=\"image\" src=\"../img/pause.png\" onclick=\"get(" + this.videoPlayerId + ").pauseVideo(" + this.videoPlayerId + ")\" id=\"pause-button\">\
                 <input type=\"image\" src=\"../img/stop.png\" onclick=\"get(" + this.videoPlayerId + ").stopVideo(" + this.videoPlayerId + ")\" id=\"stop-button\">\
-                <img src=\"../img/volume.png\" id=\"vol-img\">\
+                <img src=\"../img/volume.png\" id=\"vol-img\" class=\"vol-" + this.videoPlayerId + "\" onclick=\"get(" + this.videoPlayerId + ").mute()\">\
                 <input type=\"range\" id=\"change-volume-" + this.videoPlayerId + "\" onchange=\"get(" + this.videoPlayerId + ").changeVolume(" + this.videoPlayerId + ")\" step=\"0.05\" min=\"0\" max=\"1\" value=\"1\">\
             </div>\
         ");
@@ -115,6 +115,11 @@ class VideoPlayer {
 
     changeVolume() {
         this.videoPlayer.volume = document.getElementById("change-volume-" + this.videoPlayerId).value;
+    }
+
+    mute() {
+        document.getElementById("change-volume-" + this.videoPlayerId).value = 0;
+        this.changeVolume();
     }
 }
 //document.addEventListener("DOMContentLoaded", function() { generateVideoPlayers(); }, false);
