@@ -8,6 +8,7 @@ Video Player developed by BestOfCode
 
 == Setup
 1. Clone the repository and insert the files into your project.
+
 === OR
 
 === Alternatively you can import the javascript source and it will automatically initialize the video player.
