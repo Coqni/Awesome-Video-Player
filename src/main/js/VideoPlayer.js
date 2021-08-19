@@ -6,6 +6,9 @@ class VideoPlayer {
             console.log("Error: No attribute \"player-id\" set in the HTML");
             return;
         }
+
+        this.width = width;
+        this.height = height;
         this.videoPlayerId = videoPlayerId.toString();
 
         // generate a new instance of a video player
@@ -56,6 +59,7 @@ class VideoPlayer {
         } else {
 
             this.width = 200;
+            console.log("width updated");
         }
 
         if (this.videoPlayerElement.getAttribute("player-height")) {
@@ -75,34 +79,28 @@ class VideoPlayer {
         playerWrapper.setAttribute("class", "player-wrapper");
         let videoPlayerHtml = document.createElement("video");
         videoPlayerHtml.setAttribute("class", "video-player");
-
+        
         this.videoPlayer = videoPlayerHtml;
-
-        // set attributes for videoPlayer:
-        /*if(this.height > 200) {
-            this.videoPlayer.style.height = this.height;
-        }
-        if(this.width > 200) {
-            this.videoPlayer.style.width = this.width;
-        }*/
-
+        
+        this.videoPlayer.style.margin = "auto";
         let videoPlayerSource = document.createElement("source");
 
+        
         videoPlayerSource.setAttribute("src", this.videoUrl);
         videoPlayerSource.setAttribute("type", "video/mp4");
-
+        
         videoPlayerHtml.appendChild(videoPlayerSource);
         playerWrapper.appendChild(videoPlayerHtml);
         playerWrapper.insertAdjacentHTML("beforeend", "\
-            <div id=\'player-controls\'>\
-                <input type=\"image\" src=\"../img/play.png\" onclick=\"get(" + this.videoPlayerId + ").playVideo(" + this.videoPlayerId + ")\" id=\"play-button\">\
-                <input type=\"image\" src=\"../img/pause.png\" onclick=\"get(" + this.videoPlayerId + ").pauseVideo(" + this.videoPlayerId + ")\" id=\"pause-button\">\
-                <input type=\"image\" src=\"../img/stop.png\" onclick=\"get(" + this.videoPlayerId + ").stopVideo(" + this.videoPlayerId + ")\" id=\"stop-button\">\
-                <img src=\"../img/volume.png\" id=\"vol-img\" class=\"vol-" + this.videoPlayerId + "\" onclick=\"get(" + this.videoPlayerId + ").mute()\">\
-                <input type=\"range\" id=\"change-volume-" + this.videoPlayerId + "\" onchange=\"get(" + this.videoPlayerId + ").changeVolume(" + this.videoPlayerId + ")\" step=\"0.05\" min=\"0\" max=\"1\" value=\"1\">\
-            </div>\
+        <div id=\'player-controls\'>\
+        <input type=\"image\" src=\"../img/play.png\" onclick=\"get(" + this.videoPlayerId + ").playVideo(" + this.videoPlayerId + ")\" id=\"play-button\">\
+        <input type=\"image\" src=\"../img/pause.png\" onclick=\"get(" + this.videoPlayerId + ").pauseVideo(" + this.videoPlayerId + ")\" id=\"pause-button\">\
+        <input type=\"image\" src=\"../img/stop.png\" onclick=\"get(" + this.videoPlayerId + ").stopVideo(" + this.videoPlayerId + ")\" id=\"stop-button\">\
+        <img src=\"../img/volume.png\" id=\"vol-img\" class=\"vol-" + this.videoPlayerId + "\" onclick=\"get(" + this.videoPlayerId + ").mute()\">\
+        <input type=\"range\" id=\"change-volume-" + this.videoPlayerId + "\" onchange=\"get(" + this.videoPlayerId + ").changeVolume(" + this.videoPlayerId + ")\" step=\"0.05\" min=\"0\" max=\"1\" value=\"1\">\
+        </div>\
         ");
-
+        
         this.videoPlayerElement.append(playerWrapper);
     }
 

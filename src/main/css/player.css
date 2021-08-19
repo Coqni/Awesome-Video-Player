@@ -1,10 +1,10 @@
-body {
+/*body {
     width: 100%;
     margin: 0 auto;
     padding: 0px;
     font-family: helvetica;
     background-color: rgb(60, 60, 60);
-}
+}*/
 
 .wrapper {
     text-align: center;
@@ -15,23 +15,28 @@ body {
 
 .player-wrapper {
     position: relative;
-    width: 400px;
-    margin-left: 300px;
+    width: 600px;
+    margin: auto;
 }
 
 .video-player {
-    width: 400px;
+    width: 600px;
+    border-radius: 30px;
+
 }
 
 #player-controls {
-    top: 88%;
+    top: 90%;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.721);
     width: 100%;
+    margin: auto;
     padding: 5px;
     transition-duration: 0.3s;
     box-sizing: border-box;
     opacity: 0;
+    border-radius: 30px;
+
 }
 
 .player-wrapper:hover>#player-controls {
