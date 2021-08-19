@@ -136,7 +136,6 @@ class VideoPlayer {
 var videoPlayerRaws;
 var videoPlayerObjects = [];
 
-// TODO: Refactor, there will only be 1 video player per view
 generateVideoPlayers();
 
 function generateVideoPlayers() {
@@ -148,4 +147,14 @@ function generateVideoPlayers() {
     }
     videoPlayerObjects.push(new VideoPlayer());
 
+}
+
+function get(videoPlayerId) {
+
+    for (let i = 0; i < videoPlayerObjects.length; i++) {
+
+        if (videoPlayerObjects[i].videoPlayerId.localeCompare(i.toString()) == 0) {
+            return videoPlayerObjects[i];
+        }
+    }
 }
