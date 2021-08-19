@@ -97,6 +97,7 @@ class VideoPlayer {
         <input type=\"image\" src=\"../img/stop.png\" onclick=\"get(" + this.videoPlayerId + ").stopVideo(" + this.videoPlayerId + ")\" id=\"stop-button\">\
         <img src=\"../img/volume.png\" id=\"vol-img\" class=\"vol-" + this.videoPlayerId + "\" onclick=\"get(" + this.videoPlayerId + ").mute()\">\
         <input type=\"range\" id=\"change-volume-" + this.videoPlayerId + "\" onchange=\"get(" + this.videoPlayerId + ").changeVolume(" + this.videoPlayerId + ")\" step=\"0.05\" min=\"0\" max=\"1\" value=\"1\">\
+        <input type=\"image\" src=\"../img/fullscreen.png\" onclick=\"\" id=\"fullscreen-button\">\
         </div>\
         ");
         
