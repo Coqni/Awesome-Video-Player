@@ -12,7 +12,6 @@ class VideoPlayer {
         this.videoPlayerId = videoPlayerId.toString();
 
         // generate a new instance of a video player
-        this.videoPlayer;
 
         this.videoPlayerElement;
         this.getHtmlElement();
