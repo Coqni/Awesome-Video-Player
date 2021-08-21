@@ -60,3 +60,5 @@ https://videojs.com/plugins/[Plugins]
 
 * https://www.npmjs.com/package/videojs-contrib-quality-levels[Quality]
 * https://www.npmjs.com/package/videojs-playlist[Autoplay]
+* https://www.npmjs.com/package/@filmgardi/videojs-next-episode[Next Episode]
+
