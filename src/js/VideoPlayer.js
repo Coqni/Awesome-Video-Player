@@ -7,6 +7,7 @@ class VideoPlayer {
     play;
     pause;
     stop;
+    isPaused;
 
     constructor(videoPlayerId, width, height) {
 
@@ -18,6 +19,7 @@ class VideoPlayer {
         this.width = width;
         this.height = height;
         this.videoPlayerId = videoPlayerId.toString();
+        this.isPaused = true;
 
         // generate a new instance of a video player
 
@@ -123,6 +125,7 @@ class VideoPlayer {
     playVideo() {
         this.preview = 1;
         this.videoPlayer.play();
+        this.isPaused = false;
     }
 
     prepareVideoPlayer() {
@@ -132,12 +135,14 @@ class VideoPlayer {
 
     pauseVideo() {
         this.videoPlayer.pause();
+        this.isPaused = true;
     }
 
     stopVideo() {
         this.preview = 0;
         this.videoPlayer.pause();
         this.videoPlayer.currentTime = 1;
+        this.isPaused = true;
     }
 
     changeVolume() {
@@ -196,7 +201,6 @@ function maximize() {
     document.querySelectorAll(".wrapper")[0].style.height = "100%";
     document.querySelectorAll(".video-player")[0].style.height = "100%";
     document.querySelector("body").style.background = "black";
-    document.querySelector("#player-controls").style.bottom = "0%";
     document.querySelector("#player-controls").style.top = "98%";
 
     maximized = true;
@@ -210,7 +214,7 @@ function minimize() {
     document.querySelectorAll(".wrapper")[0].style.height = "auto";
     document.querySelectorAll(".video-player")[0].style.height = "auto";
     document.querySelector("body").style.background = defaultBackgroundColor;
-    document.querySelector("#player-controls").style.top = "80%";
+    document.querySelector("#player-controls").style.top = "90%";
 
     maximized = false;
 }
@@ -234,6 +238,12 @@ document.addEventListener("keydown", function(e) {
         } else {
             PLAYER.mute();
             muted = true;
+        }
+    } else if(e.key == " ") {
+        if(PLAYER.isPaused) {
+            PLAYER.playVideo();
+        } else {
+            PLAYER.pauseVideo();
         }
     }
 });
