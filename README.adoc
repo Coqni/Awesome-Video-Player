@@ -49,3 +49,14 @@ The document should look like this:
 5. Now on page-load `VideoPlayer.js` will iterate through the HTML and will generate a separate VideoPlayer for each `div` which was annotated as mentioned before.
 
 ---
+
+## VideoJS
+
+Maybe this will be replaced with videoJS
+
+https://videojs.com/getting-started/#customize[VideoJS]
+
+https://videojs.com/plugins/[Plugins]
+
+* https://www.npmjs.com/package/videojs-contrib-quality-levels[Quality]
+* https://www.npmjs.com/package/videojs-playlist[Autoplay]
