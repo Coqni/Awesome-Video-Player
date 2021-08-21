@@ -1,5 +1,13 @@
 class VideoPlayer {
 
+    width;
+    height;
+    videoPlayerId;
+    tmpVolume;
+    play;
+    pause;
+    stop;
+
     constructor(videoPlayerId, width, height) {
 
         if (videoPlayerId == undefined) {
@@ -17,10 +25,18 @@ class VideoPlayer {
         this.getHtmlElement();
         this.processAttributes();
         this.preview;
-
+        
         this.appendVideoPlayer();
-
+        
         this.prepareVideoPlayer();
+        this.setSelectors();
+    }
+
+    setSelectors() {
+        this.play = document.querySelector("#play-button");
+        this.pause = document.querySelector("#pause-button");
+        this.stop = document.querySelector("#stop-button");
+        this.fullScreen = document.querySelector("#fullscreen-button");
     }
 
     getHtmlElement() {
@@ -129,7 +145,13 @@ class VideoPlayer {
     }
 
     mute() {
+        this.tmpVolume = this.videoPlayer.volume;
         document.getElementById("change-volume-" + this.videoPlayerId).value = 0;
+        this.changeVolume();
+    }
+
+    unmute() {
+        document.getElementById("change-volume-" + this.videoPlayerId).value = this.tmpVolume;
         this.changeVolume();
     }
 }
@@ -146,22 +168,25 @@ function generateVideoPlayers() {
         tmpId = videoPlayerRaws[i].getAttribute("player-id");
         videoPlayerObjects.push(new VideoPlayer(tmpId));
     }
-    videoPlayerObjects.push(new VideoPlayer());
 
 }
+
+let PLAYER = videoPlayerObjects[0];
 
 function get(videoPlayerId) {
 
     for (let i = 0; i < videoPlayerObjects.length; i++) {
 
-        if (videoPlayerObjects[i].videoPlayerId.localeCompare(i.toString()) == 0) {
+        if (videoPlayerObjects[i].videoPlayerId == videoPlayerId) {
             return videoPlayerObjects[i];
         }
     }
 }
 
 let maximized = false;
+let muted = false;
 let defaultBackgroundColor = "white";
+let tmpVolume = 1;
 
 function maximize() {
     document.querySelectorAll(".player-wrapper")[0].style.width = "100%";
@@ -195,11 +220,20 @@ function changePlayerSize() {
 }
 
 document.addEventListener("keydown", function(e) {
+    console.log(e.key);
     if((e.key == "Escape" || e.key == "f") && maximized) {
         e.preventDefault();
         minimize();
     } else if(e.key == "f" && !maximized) {
         e.preventDefault();
         maximize();
+    } else if(e.key == "m") {
+        if(muted) {
+            PLAYER.unmute();
+            muted = false;
+        } else {
+            PLAYER.mute();
+            muted = true;
+        }
     }
 });
