@@ -171,6 +171,8 @@ function maximize() {
     document.querySelectorAll(".wrapper")[0].style.height = "100%";
     document.querySelectorAll(".video-player")[0].style.height = "100%";
     document.querySelector("body").style.background = "black";
+    document.querySelector("#player-controls").style.bottom = "0%";
+    document.querySelector("#player-controls").style.top = "98%";
 
     maximized = true;
 }
@@ -183,6 +185,7 @@ function minimize() {
     document.querySelectorAll(".wrapper")[0].style.height = "auto";
     document.querySelectorAll(".video-player")[0].style.height = "auto";
     document.querySelector("body").style.background = defaultBackgroundColor;
+    document.querySelector("#player-controls").style.top = "80%";
 
     maximized = false;
 }
@@ -190,3 +193,13 @@ function minimize() {
 function changePlayerSize() {
     maximized ? minimize() : maximize();
 }
+
+document.addEventListener("keydown", function(e) {
+    if((e.key == "Escape" || e.key == "f") && maximized) {
+        e.preventDefault();
+        minimize();
+    } else if(e.key == "f" && !maximized) {
+        e.preventDefault();
+        maximize();
+    }
+});
