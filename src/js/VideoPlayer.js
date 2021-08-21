@@ -97,7 +97,7 @@ class VideoPlayer {
         <input type=\"image\" src=\"../img/stop.png\" onclick=\"get(" + this.videoPlayerId + ").stopVideo(" + this.videoPlayerId + ")\" id=\"stop-button\">\
         <img src=\"../img/volume.png\" id=\"vol-img\" class=\"vol-" + this.videoPlayerId + "\" onclick=\"get(" + this.videoPlayerId + ").mute()\">\
         <input type=\"range\" id=\"change-volume-" + this.videoPlayerId + "\" onchange=\"get(" + this.videoPlayerId + ").changeVolume(" + this.videoPlayerId + ")\" step=\"0.05\" min=\"0\" max=\"1\" value=\"1\">\
-        <input type=\"image\" src=\"../img/fullscreen.png\" onclick=\"\" id=\"fullscreen-button\">\
+        <input type=\"image\" src=\"../img/fullscreen.png\" onclick=\"changePlayerSize()\" id=\"fullscreen-button\">\
         </div>\
         ");
         
@@ -158,4 +158,35 @@ function get(videoPlayerId) {
             return videoPlayerObjects[i];
         }
     }
+}
+
+let maximized = false;
+let defaultBackgroundColor = "white";
+
+function maximize() {
+    document.querySelectorAll(".player-wrapper")[0].style.width = "100%";
+    document.querySelectorAll(".wrapper")[0].style.width = "100%";
+    document.querySelectorAll(".video-player")[0].style.width = "100%";
+    document.querySelectorAll(".player-wrapper")[0].style.height = "100%";
+    document.querySelectorAll(".wrapper")[0].style.height = "100%";
+    document.querySelectorAll(".video-player")[0].style.height = "100%";
+    document.querySelector("body").style.background = "black";
+
+    maximized = true;
+}
+
+function minimize() {
+    document.querySelectorAll(".player-wrapper")[0].style.width = "600px";
+    document.querySelectorAll(".wrapper")[0].style.width = "600px";
+    document.querySelectorAll(".video-player")[0].style.width = "600px";
+    document.querySelectorAll(".player-wrapper")[0].style.height = "auto";
+    document.querySelectorAll(".wrapper")[0].style.height = "auto";
+    document.querySelectorAll(".video-player")[0].style.height = "auto";
+    document.querySelector("body").style.background = defaultBackgroundColor;
+
+    maximized = false;
+}
+
+function changePlayerSize() {
+    maximized ? minimize() : maximize();
 }
